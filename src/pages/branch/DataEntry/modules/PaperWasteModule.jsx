@@ -47,7 +47,7 @@ export default function PaperWasteModule({ onSave, emissionFactors }) {
         <button className={`${styles.saveBtn} ${saved ? styles.saveBtnDone : ''}`} onClick={handleSave} disabled={(tco2e === 0) || saved}>
           {saved ? '✓ Saved' : 'Save Paper & Waste'}
         </button>
-        <span className={styles.auditNote}>🔒 Saved entries are logged with your user ID and timestamp</span>
+        <span className={styles.auditNote}>Saved entries are logged with your user ID and timestamp</span>
       </div>
     </div>
   )

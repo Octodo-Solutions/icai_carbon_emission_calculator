@@ -27,7 +27,7 @@
 }
 .tabBtn:hover { background: var(--bg); color: var(--text); }
 .tabActive { background: var(--navy); color: #fff; }
-.tabActive:hover { background: var(--navy-dark); }
+.tabActive:hover { background: var(--navy-dark); color: #fff; }
 
 .tabContent { display: flex; flex-direction: column; gap: 20px; }
 

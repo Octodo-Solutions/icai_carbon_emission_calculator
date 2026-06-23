@@ -51,7 +51,7 @@ export default function DGSetModule({ onSave, emissionFactors }) {
         <button className={`${styles.saveBtn} ${saved ? styles.saveBtnDone : ''}`} onClick={handleSave} disabled={!litres || saved}>
           {saved ? '✓ Saved' : 'Save DG Set'}
         </button>
-        <span className={styles.auditNote}>🔒 Saved entries are logged with your user ID and timestamp</span>
+        <span className={styles.auditNote}>Saved entries are logged with your user ID and timestamp</span>
       </div>
     </div>
   )

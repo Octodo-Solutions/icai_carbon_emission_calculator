@@ -16,12 +16,21 @@
   height: 40px;
   border-radius: 10px;
   background: var(--navy-light);
+  color: var(--navy);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
   flex-shrink: 0;
 }
+.accent-navy  .icon { background: var(--navy-light);  color: var(--navy); }
+.accent-green .icon { background: var(--green-light); color: var(--green); }
+.accent-amber .icon { background: var(--amber-light); color: var(--amber); }
+.accent-red   .icon { background: var(--red-light);   color: var(--red); }
+.accent-gold  .icon { background: var(--gold-light);  color: var(--gold); }
+.accent-s1    .icon { background: var(--s1-light);    color: var(--s1); }
+.accent-s2    .icon { background: var(--s2-light);    color: var(--s2); }
+.accent-s3    .icon { background: var(--s3-light);    color: var(--s3); }
 
 .body { flex: 1; min-width: 0; }
 .label { font-size: 11px; font-weight: 500; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }

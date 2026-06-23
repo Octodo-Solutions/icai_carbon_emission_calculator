@@ -30,7 +30,7 @@ export default function TravelModule({ onSave, emissionFactors }) {
     <div className={styles.moduleBody}>
       {/* Air travel */}
       <div className={styles.subSection}>
-        <div className={styles.subTitle}>✈️ Air Travel</div>
+        <div className={styles.subTitle}>Air Travel</div>
         <div className={styles.formRow}>
           <div className={styles.formGroup}>
             <label className={styles.label}>From</label>
@@ -55,7 +55,7 @@ export default function TravelModule({ onSave, emissionFactors }) {
 
       {/* Rail travel */}
       <div className={styles.subSection}>
-        <div className={styles.subTitle}>🚂 Rail Travel</div>
+        <div className={styles.subTitle}>Rail Travel</div>
         <div className={styles.formRow}>
           <div className={styles.formGroup}>
             <label className={styles.label}>From</label>
@@ -80,7 +80,7 @@ export default function TravelModule({ onSave, emissionFactors }) {
 
       {/* Road travel */}
       <div className={styles.subSection}>
-        <div className={styles.subTitle}>🚗 Road Travel</div>
+        <div className={styles.subTitle}>Road Travel</div>
         <div className={styles.formRow}>
           <div className={styles.formGroup}>
             <label className={styles.label}>Total Distance (km)</label>
@@ -110,7 +110,7 @@ export default function TravelModule({ onSave, emissionFactors }) {
         <button className={`${styles.saveBtn} ${saved ? styles.saveBtnDone : ''}`} onClick={handleSave} disabled={total === 0 || saved}>
           {saved ? '✓ Saved' : 'Save Travel'}
         </button>
-        <span className={styles.auditNote}>🔒 Saved entries are logged with your user ID and timestamp</span>
+        <span className={styles.auditNote}>Saved entries are logged with your user ID and timestamp</span>
       </div>
     </div>
   )

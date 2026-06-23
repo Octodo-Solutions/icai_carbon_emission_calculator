@@ -24,7 +24,7 @@
   gap: 10px;
   margin-bottom: 40px;
 }
-.brandIcon { font-size: 28px; }
+.brandIcon { font-size: 28px; color: #fff; display: flex; align-items: center; }
 .brandName { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; color: #fff; }
 
 .headline {

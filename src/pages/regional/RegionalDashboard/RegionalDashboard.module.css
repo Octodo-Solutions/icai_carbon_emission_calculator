@@ -12,9 +12,8 @@
 
 .kpiRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
-.grid { display: grid; grid-template-columns: 1fr 360px; gap: 20px; }
-.mapWrap { display: flex; justify-content: center; padding: 10px 0; }
-.rightCol { display: flex; flex-direction: column; gap: 0; }
+.grid { display: grid; grid-template-columns: minmax(340px, 520px) 1fr; gap: 20px; align-items: start; }
+.rightCol { display: flex; flex-direction: column; gap: 20px; }
 
 .approvalItem {
   padding: 14px 20px;

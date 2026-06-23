@@ -29,7 +29,7 @@ export function AppProvider({ children }) {
 
   const showToast = useCallback((message, type = 'success') => {
     if (type === 'error') toast.error(message)
-    else if (type === 'info') toast(message, { icon: 'ℹ️' })
+    else if (type === 'info') toast(message)
     else toast.success(message)
   }, [])
 

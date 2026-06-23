@@ -1,3 +1,4 @@
+import { UploadSimple } from '@phosphor-icons/react'
 import Modal from '../../../components/common/Modal/Modal'
 import styles from './SubmitModal.module.css'
 
@@ -6,7 +7,7 @@ export default function SubmitModal({ open, onClose, onConfirm, scopeTotals, sav
     <Modal open={open} onClose={onClose} title="Submit Q1 FY 2026-27 Report" width={480}>
       <div className={styles.body}>
         <div className={styles.info}>
-          <div className={styles.infoIcon}>📤</div>
+          <div className={styles.infoIcon}><UploadSimple size={20} /></div>
           <p className={styles.infoText}>
             You are about to submit your Q1 FY 2026-27 emission data to the <strong>Western Region Admin</strong>.
             Once submitted, you cannot edit this period's data until the admin raises a query.
@@ -38,12 +39,12 @@ export default function SubmitModal({ open, onClose, onConfirm, scopeTotals, sav
 
         {savedCount < 6 && (
           <div className={styles.warning}>
-            ⚠️ {6 - savedCount} module(s) not completed. You can still submit — incomplete modules will show as zero.
+            {6 - savedCount} module(s) not completed. You can still submit — incomplete modules will show as zero.
           </div>
         )}
 
         <div className={styles.audit}>
-          🔒 Submission will be timestamped and logged in the immutable audit trail.
+          Submission will be timestamped and logged in the immutable audit trail.
         </div>
 
         <div className={styles.actions}>

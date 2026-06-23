@@ -36,8 +36,16 @@
 .active { background: var(--navy-light); color: var(--navy); font-weight: 600; }
 .subActive { color: var(--navy); font-weight: 500; }
 
-.itemIcon { font-size: 14px; flex-shrink: 0; width: 20px; text-align: center; }
+.itemIcon { flex-shrink: 0; width: 20px; display: inline-flex; align-items: center; justify-content: center; }
 .itemLabel { flex: 1; }
+
+.statusDot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(0,0,0,0.04);
+}
 
 .badge {
   background: var(--navy);

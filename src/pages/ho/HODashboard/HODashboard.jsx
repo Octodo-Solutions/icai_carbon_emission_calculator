@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../../../context/AppContext'
+import { ShieldCheck, Buildings, Bank, ChartBar, Hourglass } from '@phosphor-icons/react'
 import AppLayout from '../../../components/layout/AppLayout/AppLayout'
 import KpiCard from '../../../components/common/KpiCard/KpiCard'
 import SectionCard from '../../../components/common/SectionCard/SectionCard'
@@ -11,9 +12,17 @@ import styles from './HODashboard.module.css'
 export default function HODashboard() {
   const { hoApprovals, approveHoEntity, branches, showToast } = useApp()
   const [freqOverrides, setFreqOverrides] = useState({})
+  const [entitySearch, setEntitySearch] = useState('')
+  const [entityType, setEntityType] = useState('all')
 
   const activeBranches = branches.filter(b => b.status !== 'overdue' && b.tco2e !== null).length
   const submitted = branches.filter(b => b.status === 'approved').length
+
+  const filteredEntities = branches.filter(b => {
+    if (entityType === 'branch' && b.type === 'firm') return false
+    if (entityType === 'firm' && b.type !== 'firm') return false
+    return b.name.toLowerCase().includes(entitySearch.toLowerCase())
+  })
 
   function handleApprove(id, name) {
     approveHoEntity(id)
@@ -28,10 +37,22 @@ export default function HODashboard() {
   return (
     <AppLayout>
       <div className={styles.page}>
+        {/* Page header */}
+        <div className={styles.pageHeader}>
+          <div>
+            <h1 className={styles.pageTitle}>Head Office Admin Dashboard</h1>
+            <p className={styles.pageSub}>ICAI Bhawan, New Delhi · FY 2026-27 · Q1 Active</p>
+          </div>
+          <div className={styles.headerActions}>
+            <Button variant="outline" onClick={() => showToast('National report exported')}>Export Report</Button>
+            <Button onClick={() => showToast('Entity registration form opening…')}>+ Register Entity</Button>
+          </div>
+        </div>
+
         {/* DPDP banner */}
         <div className={styles.dpdpBanner}>
           <div className={styles.dpdpLeft}>
-            <span className={styles.dpdpIcon}>🛡️</span>
+            <span className={styles.dpdpIcon}><ShieldCheck size={22} /></span>
             <div>
               <div className={styles.dpdpTitle}>DPDP Act 2023 — Data Fiduciary Configuration</div>
               <div className={styles.dpdpDesc}>Configure data processing purposes and consent workflows as required by the Digital Personal Data Protection Act 2023</div>
@@ -49,10 +70,10 @@ export default function HODashboard() {
 
         {/* KPIs */}
         <div className={styles.kpiRow}>
-          <KpiCard label="Active Branches" value={`${activeBranches} of 185`} sub="2 pending registration" icon="🏢" accent="navy" />
-          <KpiCard label="CA Firms Onboarded" value="1,247" sub="+12 this quarter" icon="🏛️" accent="gold" />
-          <KpiCard label="Q1 Submissions" value={`${submitted} of 183`} sub={`${Math.round((submitted / 8) * 100)}% complete`} icon="📊" accent="green" />
-          <KpiCard label="Approval Queue" value={hoApprovals.length} sub="awaiting HO review" icon="⏳" accent={hoApprovals.length > 0 ? 'amber' : 'green'} />
+          <KpiCard label="Active Branches" value={`${activeBranches} of 185`} sub="2 pending registration" icon={<Buildings size={18} />} accent="navy" />
+          <KpiCard label="CA Firms Onboarded" value="1,247" sub="+12 this quarter" icon={<Bank size={18} />} accent="gold" />
+          <KpiCard label="Q1 Submissions" value={`${submitted} of 183`} sub={`${Math.round((submitted / 8) * 100)}% complete`} icon={<ChartBar size={18} />} accent="green" />
+          <KpiCard label="Approval Queue" value={hoApprovals.length} sub="awaiting HO review" icon={<Hourglass size={18} />} accent={hoApprovals.length > 0 ? 'amber' : 'green'} />
         </div>
 
         <div className={styles.grid}>
@@ -74,12 +95,14 @@ export default function HODashboard() {
             }
           >
             {hoApprovals.length === 0 ? (
-              <div className={styles.noQueue}>✅ Approval queue is clear</div>
+              <div className={styles.noQueue}>Approval queue is clear</div>
             ) : (
               <div className={styles.queueItems}>
                 {hoApprovals.map(entity => (
                   <div key={entity.id} className={styles.queueItem}>
-                    <div className={styles.queueIcon}>{entity.icon}</div>
+                    <div className={styles.queueIcon}>
+                      {entity.entityType === 'branch' ? <Buildings size={18} /> : <Bank size={18} />}
+                    </div>
                     <div className={styles.queueBody}>
                       <div className={styles.queueName}>{entity.name}</div>
                       <div className={styles.queueMeta}>
@@ -109,7 +132,26 @@ export default function HODashboard() {
           </SectionCard>
 
           {/* Active entities */}
-          <SectionCard title="Active Entities — Western Region" subtitle="Q1 FY 2026-27 status" noPad>
+          <SectionCard
+            title="Active Entities — Western Region"
+            subtitle="Q1 FY 2026-27 status"
+            action={
+              <div className={styles.entToolbar}>
+                <input
+                  className={styles.entSearch}
+                  placeholder="Search entities…"
+                  value={entitySearch}
+                  onChange={e => setEntitySearch(e.target.value)}
+                />
+                <select className={styles.entFilter} value={entityType} onChange={e => setEntityType(e.target.value)}>
+                  <option value="all">All Types</option>
+                  <option value="branch">Branch</option>
+                  <option value="firm">CA Firm</option>
+                </select>
+              </div>
+            }
+            noPad
+          >
             <table className={styles.entTable}>
               <thead>
                 <tr>
@@ -120,7 +162,7 @@ export default function HODashboard() {
                 </tr>
               </thead>
               <tbody>
-                {branches.map(b => (
+                {filteredEntities.map(b => (
                   <tr key={b.key} className={styles.entRow}>
                     <td className={styles.entName}>{b.name}</td>
                     <td className={styles.entTd}>Branch</td>

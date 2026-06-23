@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
 import { useApp } from '../../../context/AppContext'
+import { Lightning, Drop, Airplane, FileText, Flame, Bed, CalendarBlank, ChartBar, CheckCircle, TrendDown, Circle } from '@phosphor-icons/react'
 import AppLayout from '../../../components/layout/AppLayout/AppLayout'
 import KpiCard from '../../../components/common/KpiCard/KpiCard'
 import SectionCard from '../../../components/common/SectionCard/SectionCard'
@@ -9,12 +10,12 @@ import Button from '../../../components/common/Button/Button'
 import styles from './BranchDashboard.module.css'
 
 const MODULES = [
-  { key: 'electricity', label: 'Electricity', icon: '⚡', scope: 2, sub: 'Grid + DG Set' },
-  { key: 'dg', label: 'DG Set / Diesel', icon: '🛢️', scope: 1, sub: 'Stationary combustion' },
-  { key: 'travel', label: 'Business Travel', icon: '✈️', scope: 3, sub: 'Air · Rail · Road' },
-  { key: 'paper', label: 'Paper & Waste', icon: '📄', scope: 3, sub: 'Office consumables' },
-  { key: 'cooking', label: 'Cooking Fuel', icon: '🔥', scope: 1, sub: 'LPG · PNG' },
-  { key: 'hotel', label: 'Hotel Stay', icon: '🏨', scope: 3, sub: 'Outstation travel' },
+  { key: 'electricity', label: 'Electricity', icon: <Lightning size={20} />, scope: 2, sub: 'Grid + DG Set' },
+  { key: 'dg', label: 'DG Set / Diesel', icon: <Drop size={20} />, scope: 1, sub: 'Stationary combustion' },
+  { key: 'travel', label: 'Business Travel', icon: <Airplane size={20} />, scope: 3, sub: 'Air · Rail · Road' },
+  { key: 'paper', label: 'Paper & Waste', icon: <FileText size={20} />, scope: 3, sub: 'Office consumables' },
+  { key: 'cooking', label: 'Cooking Fuel', icon: <Flame size={20} />, scope: 1, sub: 'LPG · PNG' },
+  { key: 'hotel', label: 'Hotel Stay', icon: <Bed size={20} />, scope: 3, sub: 'Outstation travel' },
 ]
 
 const SCOPE_COLORS = { 1: 'var(--s1)', 2: 'var(--s2)', 3: 'var(--s3)' }
@@ -67,10 +68,10 @@ export default function BranchDashboard() {
 
         {/* KPI row */}
         <div className={styles.kpiRow}>
-          <KpiCard label="Current Period" value="Q1 FY 2026-27" sub="Apr – Jun 2026" icon="📅" accent="navy" />
-          <KpiCard label="Status" value={hasCurrentSubmission ? 'Submitted' : 'Not Started'} sub={hasCurrentSubmission ? 'Awaiting Regional review' : `${daysLeft} days to deadline`} icon="📊" accent={hasCurrentSubmission ? 'green' : 'amber'} />
-          <KpiCard label="Past Submissions" value="4" sub="All approved" icon="✅" accent="green" />
-          <KpiCard label="Emission Trend" value="↓ 7.2%" sub="vs last quarter" icon="📉" accent="green" trend={{ dir: 'down', label: 'improving' }} />
+          <KpiCard label="Current Period" value="Q1 FY 2026-27" sub="Apr – Jun 2026" icon={<CalendarBlank size={18} />} accent="navy" />
+          <KpiCard label="Status" value={hasCurrentSubmission ? 'Submitted' : 'Not Started'} sub={hasCurrentSubmission ? 'Awaiting Regional review' : `${daysLeft} days to deadline`} icon={<ChartBar size={18} />} accent={hasCurrentSubmission ? 'green' : 'amber'} />
+          <KpiCard label="Past Submissions" value="4" sub="All approved" icon={<CheckCircle size={18} />} accent="green" />
+          <KpiCard label="Emission Trend" value="↓ 7.2%" sub="vs last quarter" icon={<TrendDown size={18} />} accent="green" trend={{ dir: 'down', label: 'improving' }} />
         </div>
 
         <div className={styles.grid}>
@@ -94,7 +95,9 @@ export default function BranchDashboard() {
                   </div>
                   <Badge variant={SCOPE_VARIANTS[m.scope]} size="sm">Scope {m.scope}</Badge>
                   <div className={styles.moduleStatus}>
-                    {hasCurrentSubmission ? '✓' : '○'}
+                    {hasCurrentSubmission
+                      ? <CheckCircle size={16} weight="fill" color="var(--green)" />
+                      : <Circle size={16} color="var(--border)" />}
                   </div>
                 </div>
               ))}
@@ -119,15 +122,15 @@ export default function BranchDashboard() {
 
             <SectionCard title="Reduction Tips">
               <div className={styles.tips}>
-                <div className={styles.tip}>💡 Switch to LED lighting — saves ~15% electricity</div>
-                <div className={styles.tip}>🚆 Replace short-haul flights with Rajdhani Express</div>
-                <div className={styles.tip}>📄 Enable e-invoicing to reduce paper consumption</div>
-                <div className={styles.tip}>🌱 Explore MSEDCL green tariff for renewable energy</div>
+                <div className={styles.tip}>Switch to LED lighting — saves ~15% electricity</div>
+                <div className={styles.tip}>Replace short-haul flights with Rajdhani Express</div>
+                <div className={styles.tip}>Enable e-invoicing to reduce paper consumption</div>
+                <div className={styles.tip}>Explore MSEDCL green tariff for renewable energy</div>
               </div>
             </SectionCard>
 
             <div className={styles.helpCard}>
-              <div className={styles.helpTitle}>🤔 Need help entering data?</div>
+              <div className={styles.helpTitle}>Need help entering data?</div>
               <p className={styles.helpDesc}>Refer to the ICAI Data Entry Guide or contact your Regional Admin for support.</p>
               <Button variant="ghost" size="sm">Download Guide</Button>
             </div>

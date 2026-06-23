@@ -49,7 +49,7 @@ function NationalTab({ showToast }) {
 
       <SectionCard
         title="Regional Status"
-        action={<Button size="sm" onClick={() => showToast('National report downloading…')}>⬇ Export National Report</Button>}
+        action={<Button size="sm" onClick={() => showToast('National report downloading…')}>Export National Report</Button>}
         noPad
       >
         <table className={styles.table}>
@@ -134,7 +134,6 @@ function EmissionFactorsTab({ emissionFactors, updateEmissionFactor, showToast }
   return (
     <div className={styles.tabContent}>
       <div className={styles.efBanner}>
-        <span>🔒</span>
         <div>
           <strong>Factors drive all CO₂e calculations across 183 branches and 1,247 CA firms.</strong>
           <br />No factor can be deleted — only superseded. Every historical submission is tied to the factor version active at time of entry.
@@ -213,7 +212,7 @@ function EmissionFactorsTab({ emissionFactors, updateEmissionFactor, showToast }
         {editModal && (
           <div className={styles.editBody}>
             <div className={styles.editWarning}>
-              🔒 Editing this factor creates a new version. All active submissions use the version current at time of data entry.
+              Editing this factor creates a new version. All active submissions use the version current at time of data entry.
             </div>
             <div className={styles.editGrid}>
               <div className={styles.editField}>
@@ -312,7 +311,6 @@ function BrsrTab({ showToast }) {
     <div className={styles.tabContent}>
       <div className={styles.brsrHero}>
         <div className={styles.brsrHeroLeft}>
-          <div className={styles.brsrHeroIcon}>📊</div>
           <div>
             <h3 className={styles.brsrHeroTitle}>BRSR Principle 6 — Environment</h3>
             <p className={styles.brsrHeroDesc}>Auto-populated from your carbon emission data — no re-entry required. Download SEBI-ready disclosure templates.</p>
@@ -353,8 +351,8 @@ function BrsrTab({ showToast }) {
         <h4 className={styles.brsrExportTitle}>Export BRSR-ready data</h4>
         <p className={styles.brsrExportDesc}>Download auto-populated fields in SEBI BRSR template format for direct use in your Business Responsibility Report.</p>
         <div className={styles.brsrExportBtns}>
-          <Button onClick={() => showToast('BRSR Excel template downloading…')}>⬇ BRSR Excel Template</Button>
-          <Button variant="outline" onClick={() => showToast('BRSR Disclosure Report downloading…')}>⬇ BRSR Disclosure Report</Button>
+          <Button onClick={() => showToast('BRSR Excel template downloading…')}>BRSR Excel Template</Button>
+          <Button variant="outline" onClick={() => showToast('BRSR Disclosure Report downloading…')}>BRSR Disclosure Report</Button>
         </div>
       </div>
     </div>

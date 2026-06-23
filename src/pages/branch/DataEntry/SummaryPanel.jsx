@@ -1,12 +1,13 @@
+import { Lightning, Drop, Airplane, FileText, Flame, Bed, CheckCircle, Circle } from '@phosphor-icons/react'
 import styles from './SummaryPanel.module.css'
 
 const MODULES_META = {
-  electricity: { icon: '⚡', label: 'Electricity', scope: 2 },
-  dg:          { icon: '🛢️', label: 'DG Set',     scope: 1 },
-  travel:      { icon: '✈️', label: 'Travel',     scope: 3 },
-  paper:       { icon: '📄', label: 'Paper',      scope: 3 },
-  cooking:     { icon: '🔥', label: 'Cooking',    scope: 1 },
-  hotel:       { icon: '🏨', label: 'Hotel',      scope: 3 },
+  electricity: { icon: <Lightning size={14} />, label: 'Electricity', scope: 2 },
+  dg:          { icon: <Drop size={14} />, label: 'DG Set', scope: 1 },
+  travel:      { icon: <Airplane size={14} />, label: 'Travel', scope: 3 },
+  paper:       { icon: <FileText size={14} />, label: 'Paper', scope: 3 },
+  cooking:     { icon: <Flame size={14} />, label: 'Cooking', scope: 1 },
+  hotel:       { icon: <Bed size={14} />, label: 'Hotel', scope: 3 },
 }
 
 function ScopeBar({ label, value, total, color }) {
@@ -52,7 +53,7 @@ export default function SummaryPanel({ moduleData, scopeTotals, onSubmit }) {
           const d = moduleData[key]
           return (
             <div key={key} className={`${styles.checkItem} ${d.saved ? styles.checkItemDone : ''}`}>
-              <span className={styles.checkIcon}>{d.saved ? '✅' : '○'}</span>
+              <span className={styles.checkIcon}>{d.saved ? <CheckCircle size={14} weight="fill" color="var(--green)" /> : <Circle size={14} color="var(--border)" />}</span>
               <span className={styles.checkMod}>{meta.icon} {meta.label}</span>
               {d.saved && <span className={styles.checkVal}>{d.tco2e.toFixed(3)}</span>}
             </div>

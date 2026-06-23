@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
+import { Leaf } from '@phosphor-icons/react'
 import styles from './LoginPage.module.css'
 
 const DEMO_USERS = [
@@ -40,7 +41,7 @@ export default function LoginPage() {
       <div className={styles.left}>
         <div className={styles.leftContent}>
           <div className={styles.brand}>
-            <span className={styles.brandIcon}>🌿</span>
+            <span className={styles.brandIcon}><Leaf size={22} weight="light" /></span>
             <span className={styles.brandName}>ICAI Carbon Calculator</span>
           </div>
           <h1 className={styles.headline}>
@@ -116,7 +117,7 @@ export default function LoginPage() {
           </div>
 
           <div className={styles.security}>
-            🔒 TLS 1.3 encrypted · MFA enforced · DPDP Act 2023 compliant
+            TLS 1.3 encrypted · MFA enforced · DPDP Act 2023 compliant
           </div>
         </div>
 

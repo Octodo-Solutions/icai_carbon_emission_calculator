@@ -7,21 +7,18 @@ const ITEMS = [
   {
     id: 'c1',
     required: true,
-    icon: '✅',
     title: 'Authority to Submit Data',
     desc: 'I confirm I am an authorised representative of this entity and have the authority to submit emissions data on its behalf.',
   },
   {
     id: 'c2',
     required: true,
-    icon: '📋',
     title: 'Data Accuracy & Verifiability',
     desc: 'I confirm that the data submitted is accurate, complete, and supported by verifiable source documents (bills, invoices, records) which I will retain for audit purposes.',
   },
   {
     id: 'c3',
     required: false,
-    icon: '🔍',
     title: 'Data Visibility to Regional & HO',
     desc: 'I consent to my branch emission data being visible in anonymised aggregated form to Regional Office and Head Office administrators for national reporting.',
   },
@@ -48,7 +45,6 @@ export default function ConsentPage() {
     <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.header}>
-          <div className={styles.headerIcon}>🛡️</div>
           <h2 className={styles.title}>Data Responsibility Acknowledgement</h2>
           <p className={styles.sub}>One-time consent required before first data entry — DPDP Act 2023</p>
         </div>
@@ -66,7 +62,6 @@ export default function ConsentPage() {
                 onChange={() => toggle(item.id)}
                 className={styles.checkbox}
               />
-              <div className={styles.itemIcon}>{item.icon}</div>
               <div className={styles.itemBody}>
                 <div className={styles.itemTitle}>
                   {item.title}

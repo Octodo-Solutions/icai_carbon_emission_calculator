@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useApp } from '../../../context/AppContext'
 import { useAuth } from '../../../context/AuthContext'
+import { Lightning, Drop, Airplane, FileText, Flame, Bed } from '@phosphor-icons/react'
 import AppLayout from '../../../components/layout/AppLayout/AppLayout'
 import { calcScopeTotals } from '../../../utils/calculations'
 import { MOCK_SUBMISSION_PUNE } from '../../../data/mockSubmissions'
@@ -16,12 +17,12 @@ import SubmitModal from './SubmitModal'
 import styles from './DataEntry.module.css'
 
 const MODULES_CONFIG = [
-  { key: 'electricity', label: 'Electricity Consumption', icon: '⚡', scope: 2, Component: ElectricityModule },
-  { key: 'dg',          label: 'DG Set / Diesel Fuel',   icon: '🛢️', scope: 1, Component: DGSetModule },
-  { key: 'travel',      label: 'Business Travel',         icon: '✈️', scope: 3, Component: TravelModule },
-  { key: 'paper',       label: 'Paper & Waste',           icon: '📄', scope: 3, Component: PaperWasteModule },
-  { key: 'cooking',     label: 'Cooking Fuel & Gases',    icon: '🔥', scope: 1, Component: CookingFuelModule },
-  { key: 'hotel',       label: 'Hotel Stay',              icon: '🏨', scope: 3, Component: HotelStayModule },
+  { key: 'electricity', label: 'Electricity Consumption', icon: <Lightning size={18} />, scope: 2, Component: ElectricityModule },
+  { key: 'dg',          label: 'DG Set / Diesel Fuel',   icon: <Drop size={18} />, scope: 1, Component: DGSetModule },
+  { key: 'travel',      label: 'Business Travel',         icon: <Airplane size={18} />, scope: 3, Component: TravelModule },
+  { key: 'paper',       label: 'Paper & Waste',           icon: <FileText size={18} />, scope: 3, Component: PaperWasteModule },
+  { key: 'cooking',     label: 'Cooking Fuel & Gases',    icon: <Flame size={18} />, scope: 1, Component: CookingFuelModule },
+  { key: 'hotel',       label: 'Hotel Stay',              icon: <Bed size={18} />, scope: 3, Component: HotelStayModule },
 ]
 
 const SCOPE_BADGE = { 1: styles.s1Badge, 2: styles.s2Badge, 3: styles.s3Badge }

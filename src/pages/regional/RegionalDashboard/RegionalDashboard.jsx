@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../../../context/AppContext'
+import { Globe, Buildings, Hourglass, Warning } from '@phosphor-icons/react'
 import AppLayout from '../../../components/layout/AppLayout/AppLayout'
 import KpiCard from '../../../components/common/KpiCard/KpiCard'
 import SectionCard from '../../../components/common/SectionCard/SectionCard'
@@ -7,6 +8,7 @@ import Badge from '../../../components/common/Badge/Badge'
 import Button from '../../../components/common/Button/Button'
 import Modal from '../../../components/common/Modal/Modal'
 import IndiaMap from '../../../components/charts/IndiaMap/IndiaMap'
+import NationalTrendLine from '../../../components/charts/NationalTrendLine/NationalTrendLine'
 import { REGIONAL_SUMMARY } from '../../../data/mockBranches'
 import { fmtTco2e } from '../../../utils/formatters'
 import styles from './RegionalDashboard.module.css'
@@ -59,13 +61,13 @@ function BranchDrillModal({ branch, onClose, onApprove }) {
           </div>
         )}
 
-        <div className={styles.drillNote}>🔒 You can approve or query but cannot edit branch data</div>
+        <div className={styles.drillNote}>You can approve or query but cannot edit branch data</div>
 
         <div className={styles.drillActions}>
           <Button variant="ghost" onClick={onClose}>Raise Query</Button>
           {branch.status === 'pending' && (
             <Button variant="green" onClick={() => { onApprove(branch.key); onClose() }}>
-              ✓ Approve Submission
+              Approve Submission
             </Button>
           )}
         </div>
@@ -102,23 +104,21 @@ export default function RegionalDashboard() {
       <div className={styles.page}>
         {/* RBAC banner */}
         <div className={styles.rbacBanner}>
-          🔐 <strong>Western Region Admin view</strong> — You see 42 branches across Maharashtra, Gujarat, Rajasthan &amp; Goa
+          <strong>Western Region Admin view</strong> — You see 42 branches across Maharashtra, Gujarat, Rajasthan &amp; Goa
         </div>
 
         {/* KPIs */}
         <div className={styles.kpiRow}>
-          <KpiCard label="Regional Total" value={`${REGIONAL_SUMMARY.total} t`} sub="tCO₂e submitted Q1 26-27" icon="🌍" accent="navy" />
-          <KpiCard label="Branches Submitted" value={`${submitted} of ${REGIONAL_SUMMARY.branchesTotal}`} sub={`${Math.round((submitted / REGIONAL_SUMMARY.branchesTotal) * 100)}% completion rate`} icon="🏢" accent="green" />
-          <KpiCard label="Pending Approval" value={pending} sub="awaiting your review" icon="⏳" accent="amber" />
-          <KpiCard label="Overdue" value={overdue} sub="past submission deadline" icon="⚠️" accent="red" />
+          <KpiCard label="Regional Total" value={`${REGIONAL_SUMMARY.total} t`} sub="tCO₂e submitted Q1 26-27" icon={<Globe size={18} />} accent="navy" />
+          <KpiCard label="Branches Submitted" value={`${submitted} of ${REGIONAL_SUMMARY.branchesTotal}`} sub={`${Math.round((submitted / REGIONAL_SUMMARY.branchesTotal) * 100)}% completion rate`} icon={<Buildings size={18} />} accent="green" />
+          <KpiCard label="Pending Approval" value={pending} sub="awaiting your review" icon={<Hourglass size={18} />} accent="amber" />
+          <KpiCard label="Overdue" value={overdue} sub="past submission deadline" icon={<Warning size={18} />} accent="red" />
         </div>
 
         {/* Map + Approvals */}
         <div className={styles.grid}>
-          <SectionCard title="Branch Locations — Western Region" subtitle="Click a branch marker to view details">
-            <div className={styles.mapWrap}>
-              <IndiaMap branches={branches} onBranchClick={setSelectedBranch} />
-            </div>
+          <SectionCard title="Branch Locations — Western Region" subtitle="Click a branch marker to view details" noPad>
+            <IndiaMap branches={branches} onBranchClick={setSelectedBranch} />
           </SectionCard>
 
           <div className={styles.rightCol}>
@@ -134,11 +134,15 @@ export default function RegionalDashboard() {
                   </div>
                   <div className={styles.approvalActions}>
                     <Button variant="ghost" size="sm" onClick={() => showToast('Query sent to branch', 'info')}>Raise Query</Button>
-                    <Button variant="green" size="sm" onClick={() => handleApprove(b.key)}>✓ Approve</Button>
+                    <Button variant="green" size="sm" onClick={() => handleApprove(b.key)}>Approve</Button>
                   </div>
                 </div>
               ))}
-              {pending === 0 && <div className={styles.noApprovals}>✅ All pending submissions reviewed</div>}
+              {pending === 0 && <div className={styles.noApprovals}>All pending submissions reviewed</div>}
+            </SectionCard>
+
+            <SectionCard title="Regional Trend" subtitle="tCO₂e · submitted branches only">
+              <NationalTrendLine data={REGIONAL_SUMMARY.trend} label="Regional Total" />
             </SectionCard>
           </div>
         </div>
@@ -168,6 +172,7 @@ export default function RegionalDashboard() {
               <tr>
                 <th>Branch</th>
                 <th>State</th>
+                <th>Reporting</th>
                 <th>Status</th>
                 <th>tCO₂e</th>
                 <th>Action</th>
@@ -178,6 +183,7 @@ export default function RegionalDashboard() {
                 <tr key={b.key} className={styles.row} onClick={() => setSelectedBranch(b)}>
                   <td className={styles.branchName}>{b.name}</td>
                   <td className={styles.td}>{b.state}</td>
+                  <td className={styles.td}>Quarterly</td>
                   <td className={styles.td}>
                     <Badge variant={STATUS_BADGE[b.status]} dot={STATUS_BADGE[b.status] === 'green' ? 'green' : STATUS_BADGE[b.status] === 'amber' ? 'amber' : STATUS_BADGE[b.status] === 'red' ? 'red' : 'navy'}>
                       {STATUS_LABELS[b.status]}
@@ -187,6 +193,15 @@ export default function RegionalDashboard() {
                   <td className={styles.td}>
                     {b.status === 'pending' && (
                       <Button size="sm" variant="green" onClick={e => { e.stopPropagation(); handleApprove(b.key) }}>Approve</Button>
+                    )}
+                    {b.status === 'approved' && (
+                      <Button size="sm" variant="ghost" onClick={e => { e.stopPropagation(); setSelectedBranch(b) }}>View</Button>
+                    )}
+                    {b.status === 'in-progress' && (
+                      <Button size="sm" variant="ghost" onClick={e => { e.stopPropagation(); showToast('Reminder sent to branch', 'info') }}>Nudge</Button>
+                    )}
+                    {b.status === 'overdue' && (
+                      <Button size="sm" variant="ghost" onClick={e => { e.stopPropagation(); showToast('Escalated to Head Office', 'info') }}>Escalate</Button>
                     )}
                   </td>
                 </tr>

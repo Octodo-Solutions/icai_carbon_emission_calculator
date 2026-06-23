@@ -1,6 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, Tooltip, Area, AreaChart, ResponsiveContainer } from 'recharts'
 
-export default function NationalTrendLine({ data }) {
+export default function NationalTrendLine({ data, label = 'National Total' }) {
   return (
     <ResponsiveContainer width="100%" height={220}>
       <AreaChart data={data} margin={{ top: 8, right: 8, left: -10, bottom: 0 }}>
@@ -13,7 +13,7 @@ export default function NationalTrendLine({ data }) {
         <XAxis dataKey="quarter" tick={{ fontSize: 11 }} axisLine={false} tickLine={false} />
         <YAxis tick={{ fontSize: 11 }} axisLine={false} tickLine={false} unit=" t" domain={['auto', 'auto']} />
         <Tooltip
-          formatter={(val) => [`${val} tCO₂e`, 'National Total']}
+          formatter={(val) => [`${val} tCO₂e`, label]}
           contentStyle={{ fontSize: 12, borderRadius: 6, border: '1px solid var(--border)' }}
         />
         <Area type="monotone" dataKey="value" stroke="var(--navy)" strokeWidth={2.5} fill="url(#trendGrad)" dot={{ r: 4, fill: 'var(--navy)' }} />

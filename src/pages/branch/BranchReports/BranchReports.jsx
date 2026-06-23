@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useApp } from '../../../context/AppContext'
+import { Globe, Drop, Lightning, Airplane, CheckCircle } from '@phosphor-icons/react'
 import AppLayout from '../../../components/layout/AppLayout/AppLayout'
 import KpiCard from '../../../components/common/KpiCard/KpiCard'
 import SectionCard from '../../../components/common/SectionCard/SectionCard'
@@ -20,7 +21,7 @@ function AiInsightPanel({ insight }) {
   return (
     <div className={styles.aiPanel}>
       <div className={styles.aiHead}>
-        <span>🤖 AI Emission Insight</span>
+        <span>AI Emission Insight</span>
         <span className={styles.aiBadge}>Powered by GenAI</span>
       </div>
       <div className={styles.aiBody}>
@@ -36,7 +37,6 @@ function AiInsightPanel({ insight }) {
               {insight.recommendations.map((r, i) => (
                 <div key={i} className={styles.aiRec}>
                   <div className={styles.aiRecHead}>
-                    <span>{r.emoji}</span>
                     <span className={styles.aiRecTitle}>{r.title}</span>
                     <span className={styles.aiSaving}>{r.saving}</span>
                   </div>
@@ -44,7 +44,7 @@ function AiInsightPanel({ insight }) {
                 </div>
               ))}
             </div>
-            <div className={styles.aiFooter}>🔒 Your data is not shared with external AI engines</div>
+            <div className={styles.aiFooter}>Your data is not shared with external AI engines</div>
           </>
         )}
       </div>
@@ -88,16 +88,16 @@ export default function BranchReports() {
             <p className={styles.pageMeta}>{sub.branch} · {sub.periodLabel} · Submitted {sub.submittedAt}</p>
           </div>
           <div className={styles.exports}>
-            <Button variant="ghost" size="sm" onClick={() => handleExport('Excel')}>⬇ Excel</Button>
-            <Button variant="ghost" size="sm" onClick={() => handleExport('PDF')}>⬇ PDF</Button>
-            <Button variant="outline" size="sm" onClick={() => handleExport('Share link')}>🔗 Share</Button>
+            <Button variant="ghost" size="sm" onClick={() => handleExport('Excel')}>Excel</Button>
+            <Button variant="ghost" size="sm" onClick={() => handleExport('PDF')}>PDF</Button>
+            <Button variant="outline" size="sm" onClick={() => handleExport('Share link')}>Share</Button>
           </div>
         </div>
 
         {/* Status bar */}
         <div className={styles.statusBar}>
           <div className={styles.statusLeft}>
-            <span className={styles.statusIcon}>✅</span>
+            <span className={styles.statusIcon}><CheckCircle size={16} weight="fill" color="var(--green)" /></span>
             <span className={styles.statusText}>Submitted successfully · {sub.submittedAt}</span>
           </div>
           <Badge variant="amber" dot="amber" size="md">Awaiting Regional Approval</Badge>
@@ -105,10 +105,10 @@ export default function BranchReports() {
 
         {/* KPIs */}
         <div className={styles.kpiRow}>
-          <KpiCard label="Total Emissions" value={`${sub.total.toFixed(3)}`} sub="tCO₂e this quarter" icon="🌍" accent="navy" />
-          <KpiCard label="Scope 1 — Direct" value={sub.s1.toFixed(3)} sub="tCO₂e (DG + Cooking)" icon="🛢️" accent="s1" />
-          <KpiCard label="Scope 2 — Energy" value={sub.s2.toFixed(3)} sub="tCO₂e (Grid electricity)" icon="⚡" accent="s2" />
-          <KpiCard label="Scope 3 — Value Chain" value={sub.s3.toFixed(3)} sub="tCO₂e (Travel + Waste)" icon="✈️" accent="s3" />
+          <KpiCard label="Total Emissions" value={`${sub.total.toFixed(3)}`} sub="tCO₂e this quarter" icon={<Globe size={18} />} accent="navy" />
+          <KpiCard label="Scope 1 — Direct" value={sub.s1.toFixed(3)} sub="tCO₂e (DG + Cooking)" icon={<Drop size={18} />} accent="s1" />
+          <KpiCard label="Scope 2 — Energy" value={sub.s2.toFixed(3)} sub="tCO₂e (Grid electricity)" icon={<Lightning size={18} />} accent="s2" />
+          <KpiCard label="Scope 3 — Value Chain" value={sub.s3.toFixed(3)} sub="tCO₂e (Travel + Waste)" icon={<Airplane size={18} />} accent="s3" />
         </div>
 
         {/* Charts */}

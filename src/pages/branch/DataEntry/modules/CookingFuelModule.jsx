@@ -59,7 +59,7 @@ export default function CookingFuelModule({ onSave, emissionFactors }) {
         <button className={`${styles.saveBtn} ${saved ? styles.saveBtnDone : ''}`} onClick={handleSave} disabled={!qty || saved}>
           {saved ? '✓ Saved' : 'Save Cooking Fuel'}
         </button>
-        <span className={styles.auditNote}>🔒 Saved entries are logged with your user ID and timestamp</span>
+        <span className={styles.auditNote}>Saved entries are logged with your user ID and timestamp</span>
       </div>
     </div>
   )

@@ -64,7 +64,7 @@ export default function ElectricityModule({ onSave, emissionFactors }) {
         <button className={`${styles.saveBtn} ${saved ? styles.saveBtnDone : ''}`} onClick={handleSave} disabled={!kwh || saved}>
           {saved ? '✓ Saved' : 'Save Electricity'}
         </button>
-        <span className={styles.auditNote}>🔒 Saved entries are logged with your user ID and timestamp</span>
+        <span className={styles.auditNote}>Saved entries are logged with your user ID and timestamp</span>
       </div>
     </div>
   )
