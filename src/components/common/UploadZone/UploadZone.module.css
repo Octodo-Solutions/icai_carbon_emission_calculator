@@ -1,0 +1,37 @@
+.zone {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+  user-select: none;
+  background: var(--bg);
+}
+.zone:hover, .zone:focus { border-color: var(--navy); background: var(--navy-light); outline: none; }
+.done { border-color: var(--green); background: var(--green-light); cursor: default; }
+
+.icon { font-size: 28px; margin-bottom: 6px; }
+.main { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 3px; }
+.sub  { font-size: 11px; color: var(--text-2); }
+.ocr {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--navy);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 99px;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border);
+  border-top-color: var(--navy);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  margin: 0 auto 8px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }

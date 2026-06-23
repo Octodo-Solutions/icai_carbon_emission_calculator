@@ -1,0 +1,191 @@
+.page { display: flex; flex-direction: column; gap: 24px; max-width: 1200px; }
+
+.pageHeader { }
+.pageTitle { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.pageSub { font-size: 12px; color: var(--text-2); }
+
+.tabBar {
+  display: flex;
+  gap: 4px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px;
+  align-self: flex-start;
+}
+.tabBtn {
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.tabBtn:hover { background: var(--bg); color: var(--text); }
+.tabActive { background: var(--navy); color: #fff; }
+.tabActive:hover { background: var(--navy-dark); }
+
+.tabContent { display: flex; flex-direction: column; gap: 20px; }
+
+/* National tab */
+.kpiRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.kpiCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--navy);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+}
+.kpiVal { font-size: 26px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.kpiLbl { font-size: 11px; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; }
+.kpiSub { font-size: 11px; color: var(--text-3); }
+
+.chartGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.table { width: 100%; border-collapse: collapse; }
+.table th {
+  text-align: left;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.trow { border-bottom: 1px solid var(--border); }
+.trow:last-child { border-bottom: none; }
+.td { padding: 11px 16px; font-size: 13px; color: var(--text-2); vertical-align: middle; }
+.tdBold { padding: 11px 16px; font-size: 13px; font-weight: 500; color: var(--text); vertical-align: middle; }
+
+.rateWrap { display: flex; align-items: center; gap: 8px; }
+.rateBar { width: 80px; height: 6px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.rateFill { height: 100%; border-radius: 3px; }
+
+/* EF tab */
+.efBanner {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: var(--navy-light);
+  border: 1px solid #c8d4ec;
+  border-left: 4px solid var(--navy);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--navy);
+  line-height: 1.6;
+}
+.efToolbar { display: flex; gap: 10px; align-items: center; }
+.efSearch {
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  background: var(--bg);
+  outline: none;
+  width: 200px;
+}
+
+.expandBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+  color: var(--text-3);
+  padding: 4px;
+}
+.vRow { background: var(--bg); }
+.vCell {
+  padding: 8px 16px;
+  font-size: 11px;
+  color: var(--text-2);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.vVal { font-weight: 600; color: var(--navy); }
+.vReason { color: var(--text-3); font-style: italic; }
+
+.editBody { display: flex; flex-direction: column; gap: 14px; }
+.editWarning { background: var(--amber-light); border-left: 3px solid var(--amber); padding: 10px 14px; border-radius: var(--radius-sm); font-size: 12px; color: #7a4a00; }
+.editGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.editField { display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--text-2); font-weight: 500; }
+.editInput {
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  transition: border-color var(--transition);
+}
+.editInput:focus { border-color: var(--navy); }
+.editTextarea {
+  padding: 9px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: var(--text);
+  background: var(--bg);
+  outline: none;
+  resize: vertical;
+  font-family: 'Inter', sans-serif;
+}
+.editTextarea:focus { border-color: var(--navy); }
+.editActions { display: flex; gap: 10px; justify-content: flex-end; }
+
+/* BRSR tab */
+.brsrHero {
+  background: var(--navy);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brsrHeroLeft { display: flex; gap: 16px; align-items: flex-start; }
+.brsrHeroIcon { font-size: 36px; flex-shrink: 0; }
+.brsrHeroTitle { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.brsrHeroDesc { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+.brsrProgress { width: 280px; flex-shrink: 0; }
+.brsrProgressLabel { font-size: 14px; font-weight: 600; color: var(--gold); margin-bottom: 8px; }
+.brsrProgressBar { height: 8px; background: rgba(255,255,255,0.2); border-radius: 4px; overflow: hidden; margin-bottom: 4px; }
+.brsrProgressFill { height: 100%; background: var(--gold); border-radius: 4px; }
+.brsrProgressSub { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+.brsrGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.brsrFields { display: flex; flex-direction: column; gap: 0; }
+.brsrField {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 10px;
+}
+.brsrField:last-child { border-bottom: none; }
+.brsrAuto { background: none; }
+.brsrFieldLabel { font-size: 12px; color: var(--text-2); flex: 1; }
+.brsrFieldRight { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+.brsrFieldVal { font-size: 13px; font-weight: 600; color: var(--text); }
+
+.brsrExport {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  text-align: center;
+}
+.brsrExportTitle { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+.brsrExportDesc { font-size: 13px; color: var(--text-2); margin-bottom: 18px; line-height: 1.6; }
+.brsrExportBtns { display: flex; gap: 12px; justify-content: center; }

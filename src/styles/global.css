@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+  --navy: #003087;
+  --navy-dark: #002060;
+  --gold: #C9A227;
+  --gold-light: #F5E9C0;
+  --green: #2D7A4F;
+  --green-light: #E8F5EE;
+  --bg: #F0F2F7;
+  --surface: #FFFFFF;
+  --border: #DDE3EE;
+  --text: #1A1E2E;
+  --text-2: #5A6478;
+  --text-3: #8A96AB;
+  --red: #C0392B;
+  --red-light: #FDECEA;
+  --amber: #E67E22;
+  --amber-light: #FEF3E2;
+  --navy-light: #E8EDF7;
+  --s1: #C0392B;
+  --s2: #2980B9;
+  --s3: #8E44AD;
+  --s1-light: #FADBD8;
+  --s2-light: #D6EAF8;
+  --s3-light: #E8DAEF;
+  --nav-height: 58px;
+  --sidebar-width: 220px;
+  --radius: 10px;
+  --radius-sm: 6px;
+  --shadow: 0 1px 4px rgba(0,0,0,0.08), 0 2px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.10);
+  --transition: 0.18s ease;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  line-height: 1.25;
+}
+
+h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+a {
+  color: var(--navy);
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-3);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+}

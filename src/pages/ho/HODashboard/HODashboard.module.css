@@ -1,0 +1,57 @@
+.page { display: flex; flex-direction: column; gap: 24px; max-width: 1200px; }
+
+.dpdpBanner {
+  background: var(--navy-light);
+  border: 1px solid #c8d4ec;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.dpdpLeft { display: flex; align-items: flex-start; gap: 12px; }
+.dpdpIcon { font-size: 24px; flex-shrink: 0; }
+.dpdpTitle { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 3px; }
+.dpdpDesc { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+.dpdpRight { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+.kpiRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.noQueue { padding: 20px; text-align: center; font-size: 13px; color: var(--text-2); }
+.queueItems { display: flex; flex-direction: column; gap: 0; }
+.queueItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.queueItem:last-child { border-bottom: none; }
+.queueIcon { font-size: 22px; flex-shrink: 0; }
+.queueBody { flex: 1; }
+.queueName { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.queueMeta { font-size: 11px; color: var(--text-2); }
+.queueFreq { display: flex; flex-direction: column; gap: 3px; }
+.freqLabel { font-size: 10px; color: var(--text-3); }
+.freqSelect { padding: 5px 8px; border: 1px solid var(--border); border-radius: var(--radius-sm); font-size: 12px; background: var(--bg); cursor: pointer; }
+.queueActions { display: flex; gap: 6px; flex-shrink: 0; }
+
+.entTable { width: 100%; border-collapse: collapse; }
+.entTable th {
+  text-align: left;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.entRow { border-bottom: 1px solid var(--border); }
+.entRow:last-child { border-bottom: none; }
+.entName { padding: 11px 16px; font-size: 13px; font-weight: 500; color: var(--text); }
+.entTd { padding: 11px 16px; font-size: 13px; color: var(--text-2); vertical-align: middle; }

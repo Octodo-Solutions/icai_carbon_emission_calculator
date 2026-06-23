@@ -1,0 +1,68 @@
+.panel {
+  position: sticky;
+  top: calc(var(--nav-height) + 20px);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.panelHead {
+  background: var(--navy);
+  color: #fff;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.panelTitle { font-size: 13px; font-weight: 600; }
+.periodLabel { font-size: 10px; color: rgba(255,255,255,0.65); }
+
+.totalWrap { padding: 20px 18px 12px; text-align: center; }
+.totalVal { font-size: 40px; font-weight: 700; color: var(--text); font-variant-numeric: tabular-nums; }
+.totalUnit { font-size: 12px; color: var(--text-2); font-weight: 500; }
+
+.scopeBars { padding: 0 18px 14px; display: flex; flex-direction: column; gap: 8px; }
+
+.scopeBar { }
+.scopeBarHead { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.scopeBarLabel { font-size: 10px; color: var(--text-2); font-weight: 500; }
+.scopeBarVal { font-size: 11px; font-weight: 600; color: var(--text); }
+
+.barTrack { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+.barFill { height: 100%; border-radius: 3px; transition: width 0.3s ease; }
+
+.divider { border-top: 1px solid var(--border); margin: 0 18px; }
+
+.checklist { padding: 12px 18px; display: flex; flex-direction: column; gap: 6px; }
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-3);
+  padding: 4px 0;
+}
+.checkItemDone { color: var(--text); }
+.checkIcon { font-size: 14px; flex-shrink: 0; }
+.checkMod { flex: 1; }
+.checkVal { font-weight: 600; color: var(--navy); font-size: 11px; }
+
+.submitBtn {
+  display: block;
+  width: calc(100% - 36px);
+  margin: 8px 18px 18px;
+  padding: 11px;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.submitBtn:hover:not(:disabled) { background: #226040; }
+.submitBtn:disabled { opacity: 0.4; cursor: not-allowed; }

@@ -1,0 +1,33 @@
+.wrap { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+
+.chartWrap { position: relative; width: 200px; height: 200px; }
+
+.center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.totalVal { font-size: 22px; font-weight: 700; color: var(--text); line-height: 1.1; }
+.totalLbl { font-size: 11px; color: var(--text-2); font-weight: 500; }
+
+.legend { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.legendDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+.legendName { flex: 1; color: var(--text-2); }
+.legendVal { font-weight: 600; color: var(--text); font-size: 12px; }
+.legendPct { color: var(--text-3); min-width: 32px; text-align: right; }

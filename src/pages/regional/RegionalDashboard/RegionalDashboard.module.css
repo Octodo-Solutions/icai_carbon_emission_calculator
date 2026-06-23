@@ -1,0 +1,82 @@
+.page { display: flex; flex-direction: column; gap: 24px; max-width: 1200px; }
+
+.rbacBanner {
+  background: var(--navy-light);
+  border: 1px solid #c8d4ec;
+  border-left: 4px solid var(--navy);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 13px;
+  color: var(--navy);
+}
+
+.kpiRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+.grid { display: grid; grid-template-columns: 1fr 360px; gap: 20px; }
+.mapWrap { display: flex; justify-content: center; padding: 10px 0; }
+.rightCol { display: flex; flex-direction: column; gap: 0; }
+
+.approvalItem {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.approvalItem:last-child { border-bottom: none; }
+.approvalHead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.approvalName { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+.approvalMeta { font-size: 11px; color: var(--text-2); }
+.approvalTco2e { font-size: 20px; font-weight: 700; color: var(--navy); text-align: right; flex-shrink: 0; }
+.approvalTco2e span { font-size: 11px; color: var(--text-2); font-weight: 400; display: block; }
+.approvalActions { display: flex; gap: 8px; }
+.noApprovals { padding: 20px; text-align: center; font-size: 13px; color: var(--text-2); }
+
+.filters { display: flex; gap: 8px; }
+.filter {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  outline: none;
+}
+
+.table { width: 100%; border-collapse: collapse; }
+.table th {
+  text-align: left;
+  padding: 10px 16px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+.row:hover { background: var(--navy-light); }
+.row:last-child { border-bottom: none; }
+.td { padding: 12px 16px; font-size: 13px; color: var(--text-2); vertical-align: middle; }
+.branchName { padding: 12px 16px; font-size: 13px; font-weight: 500; color: var(--text); vertical-align: middle; }
+
+/* Drill modal */
+.drillBody { display: flex; flex-direction: column; gap: 16px; }
+.drillKpi { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.drillKpiItem { text-align: center; }
+.drillKpiVal { font-size: 22px; font-weight: 700; color: inherit; }
+.drillKpiLbl { font-size: 10px; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.04em; }
+
+.drillBars { display: flex; flex-direction: column; gap: 8px; }
+.drillBarsTitle { font-size: 11px; font-weight: 600; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.drillBar { display: flex; align-items: center; gap: 10px; }
+.drillBarLabel { width: 80px; font-size: 12px; color: var(--text-2); text-align: right; }
+.drillBarTrack { flex: 1; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+.drillBarFill { height: 100%; background: var(--navy); border-radius: 4px; transition: width 0.3s ease; }
+.drillBarVal { width: 50px; font-size: 12px; font-weight: 600; color: var(--text); }
+
+.drillNote { font-size: 11px; color: var(--text-3); background: var(--bg); padding: 8px 12px; border-radius: var(--radius-sm); }
+.drillActions { display: flex; gap: 10px; justify-content: flex-end; }
