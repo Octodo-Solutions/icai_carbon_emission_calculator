@@ -2,12 +2,15 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthProvider, useAuth } from './context/AuthContext'
 import { AppProvider } from './context/AppContext'
 
+import Home from './pages/public/Home/Home'
+import HelpSupport from './pages/public/HelpSupport/HelpSupport'
 import LoginPage from './pages/auth/LoginPage/LoginPage'
 import MfaPage from './pages/auth/MfaPage/MfaPage'
 import ConsentPage from './pages/auth/ConsentPage/ConsentPage'
 import BranchDashboard from './pages/branch/BranchDashboard/BranchDashboard'
 import DataEntry from './pages/branch/DataEntry/DataEntry'
 import BranchReports from './pages/branch/BranchReports/BranchReports'
+import Recommendations from './pages/branch/Recommendations/Recommendations'
 import RegionalDashboard from './pages/regional/RegionalDashboard/RegionalDashboard'
 import HODashboard from './pages/ho/HODashboard/HODashboard'
 import HOAnalytics from './pages/ho/HOAnalytics/HOAnalytics'
@@ -24,7 +27,8 @@ function ProtectedRoute({ children, roles }) {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/help" element={<HelpSupport />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/mfa" element={<MfaPage />} />
       <Route path="/consent" element={<ConsentPage />} />
@@ -37,6 +41,9 @@ function AppRoutes() {
       <Route path="/branch/reports" element={
         <ProtectedRoute roles={['branch']}><BranchReports /></ProtectedRoute>
       } />
+      <Route path="/branch/recommendations" element={
+        <ProtectedRoute roles={['branch']}><Recommendations /></ProtectedRoute>
+      } />
       <Route path="/regional/dashboard" element={
         <ProtectedRoute roles={['regional']}><RegionalDashboard /></ProtectedRoute>
       } />
@@ -46,7 +53,7 @@ function AppRoutes() {
       <Route path="/ho/analytics" element={
         <ProtectedRoute roles={['ho']}><HOAnalytics /></ProtectedRoute>
       } />
-      <Route path="*" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )
 }

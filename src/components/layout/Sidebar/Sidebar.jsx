@@ -5,7 +5,7 @@ import {
   MapTrifold, Hourglass, Buildings, ChartPieSlice, FileText, Export,
   Bank, Flask, LockSimple, ShieldCheck, ClipboardText, DownloadSimple,
   Scales, Key, Question, ChatCircleText, ClockCounterClockwise, TrendUp,
-  ChartLineUp, GlobeHemisphereEast, CheckCircle, MapPin,
+  ChartLineUp, GlobeHemisphereEast, CheckCircle, MapPin, Lightbulb,
 } from '@phosphor-icons/react'
 import styles from './Sidebar.module.css'
 
@@ -16,12 +16,13 @@ const BRANCH_ITEMS = [
   { label: 'Dashboard', path: '/branch/dashboard', icon: <House size={16} /> },
   { label: 'Data Entry', path: '/branch/data-entry', icon: <PencilLine size={16} />, badge: '0/6' },
   { label: 'My Reports', path: '/branch/reports', icon: <ChartBar size={16} /> },
+  { label: 'Recommendations', path: '/branch/recommendations', icon: <Lightbulb size={16} /> },
   { section: 'History' },
   { label: 'Past Submissions', icon: <ClockCounterClockwise size={16} /> },
   { label: 'Trends', icon: <TrendUp size={16} /> },
   { section: 'Support' },
-  { label: 'Help & FAQs', icon: <Question size={16} /> },
-  { label: 'Raise a Query', icon: <ChatCircleText size={16} /> },
+  { label: 'Help & FAQs', path: '/help', icon: <Question size={16} /> },
+  { label: 'Raise a Query', path: '/help', icon: <ChatCircleText size={16} /> },
   { section: 'Info' },
   { label: 'Reporting Period', icon: <CalendarBlank size={16} />, info: 'Q1 FY 2026-27' },
   { label: 'Due Date', icon: <Clock size={16} />, info: '31 Jul 2026' },

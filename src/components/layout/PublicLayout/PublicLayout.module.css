@@ -1,0 +1,95 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+}
+
+/* Public header (white, unlike the navy authenticated TopNav) */
+.header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.logo { height: 38px; width: auto; display: block; }
+.brandText { line-height: 1.2; }
+.brandName {
+  font-family: 'Playfair Display', serif;
+  color: var(--navy);
+  font-size: 15px;
+  font-weight: 700;
+}
+.brandSub {
+  font-size: 9px;
+  color: var(--text-2);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.nav { display: flex; gap: 4px; flex: 1; }
+.navLink {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  padding: 7px 14px;
+  border-radius: 7px;
+  background: transparent;
+  border: none;
+  font-family: 'Inter', sans-serif;
+  transition: background var(--transition), color var(--transition);
+}
+.navLink:hover { background: var(--bg); color: var(--text); }
+.navLink.active { color: var(--navy); font-weight: 600; background: var(--navy-light); }
+
+.loginBtn {
+  background: var(--navy);
+  color: #fff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+  transition: background var(--transition);
+}
+.loginBtn:hover { background: var(--navy-dark); }
+
+/* Access banner (each page supplies the message via the `banner` prop) */
+.banner {
+  background: var(--green-light);
+  border-bottom: 1px solid #b7deca;
+  padding: 10px 32px;
+  font-size: 12.5px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  text-align: center;
+}
+.banner strong { font-weight: 700; }
+
+.main { flex: 1; }
+
+@media (max-width: 720px) {
+  .header { gap: 16px; padding: 0 16px; }
+  .nav { display: none; }
+  .brandSub { display: none; }
+}

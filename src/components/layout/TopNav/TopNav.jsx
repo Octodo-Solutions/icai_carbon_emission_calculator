@@ -9,8 +9,9 @@ const NAV_LINKS = {
     { label: 'Dashboard', path: '/branch/dashboard' },
     { label: 'Data Entry', path: '/branch/data-entry' },
     { label: 'My Reports', path: '/branch/reports' },
+    { label: 'Recommendations', path: '/branch/recommendations' },
     { label: 'Emission Factors' },
-    { label: 'Help' },
+    { label: 'Help', path: '/help' },
   ],
   regional: [
     { label: 'Dashboard', path: '/regional/dashboard' },
