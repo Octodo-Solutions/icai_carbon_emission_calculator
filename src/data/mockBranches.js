@@ -140,6 +140,14 @@ export const MOCK_HO_APPROVALS = [
   },
 ]
 
+// CA firms shown alongside branch offices in the HO "Active Entities" table.
+// Kept separate from MOCK_BRANCHES (which drives the Regional map/table — branches only).
+export const MOCK_CA_FIRMS = [
+  { key: 'kapoor', name: 'M/s Kapoor & Co.', code: 'FRN 098765N', region: 'Northern', type: 'firm', status: 'approved', tco2e: 3.1, frequency: 'Quarterly' },
+  { key: 'sharma', name: 'M/s Sharma & Associates', code: 'FRN 012345N', region: 'Northern', type: 'firm', status: 'in-progress', tco2e: null, frequency: 'Quarterly' },
+  { key: 'mehta', name: 'M/s Mehta & Partners', code: 'FRN 044556W', region: 'Western', type: 'firm', status: 'approved', tco2e: 2.4, frequency: 'Quarterly' },
+]
+
 export const REGIONAL_SUMMARY = {
   total: 187.4,
   branchesSubmitted: 28,

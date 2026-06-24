@@ -117,7 +117,7 @@ export default function RegionalDashboard() {
 
         {/* Map + Approvals */}
         <div className={styles.grid}>
-          <SectionCard title="Branch Locations — Western Region" subtitle="Click a branch marker to view details" noPad>
+          <SectionCard title="Branch Locations — Western Region" subtitle="Click a branch marker to view details" noPad className={styles.mapCard}>
             <IndiaMap branches={branches} onBranchClick={setSelectedBranch} />
           </SectionCard>
 

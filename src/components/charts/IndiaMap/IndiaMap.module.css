@@ -1,20 +1,27 @@
 .wrap {
   position: relative;
   width: 100%;
+  height: 100%;
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
 }
 
 .mapContainer {
   width: 100%;
+  flex: 1;
+  min-height: 360px;
   position: relative;
   background: #EDF2FB;
   overflow: hidden;
 }
 
 .svg {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
 }
 

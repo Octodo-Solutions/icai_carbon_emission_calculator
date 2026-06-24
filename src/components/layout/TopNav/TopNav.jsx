@@ -6,15 +6,24 @@ import styles from './TopNav.module.css'
 const NAV_LINKS = {
   branch: [
     { label: 'Dashboard', path: '/branch/dashboard' },
-    { label: 'Enter Data', path: '/branch/data-entry' },
-    { label: 'Reports', path: '/branch/reports' },
+    { label: 'Data Entry', path: '/branch/data-entry' },
+    { label: 'My Reports', path: '/branch/reports' },
+    { label: 'Emission Factors' },
+    { label: 'Help' },
   ],
   regional: [
     { label: 'Dashboard', path: '/regional/dashboard' },
+    { label: 'Branches' },
+    { label: 'Approvals' },
+    { label: 'Reports' },
+    { label: 'Analytics' },
   ],
   ho: [
     { label: 'Dashboard', path: '/ho/dashboard' },
+    { label: 'Entities' },
+    { label: 'Reports' },
     { label: 'Analytics', path: '/ho/analytics' },
+    { label: 'Settings' },
   ],
 }
 
@@ -45,9 +54,9 @@ export default function TopNav() {
       <nav className={styles.links}>
         {links.map(l => (
           <a
-            key={l.path}
-            className={`${styles.link} ${location.pathname === l.path ? styles.active : ''}`}
-            onClick={() => navigate(l.path)}
+            key={l.label}
+            className={`${styles.link} ${l.path && location.pathname === l.path ? styles.active : ''}`}
+            onClick={() => l.path && navigate(l.path)}
           >
             {l.label}
           </a>

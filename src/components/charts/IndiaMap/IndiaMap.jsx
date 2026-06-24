@@ -20,10 +20,10 @@ const STATUS_LABELS = {
 
 const W = 560
 const H = 380
-// Cropped to India's projected bounds (x[132..433] y[11..352]) so the map fills
-// its panel edge to edge with no dead margins. The top is trimmed a little
-// (y starts at 24) — the user is fine with a slight cut at the top.
-const VIEWBOX = '120 24 326 336'
+// Bounds the full projected India (x[132..433] y[11..352]) with small margins —
+// no top trim. The SVG fills its (flex-grown) panel via preserveAspectRatio,
+// so the map panel can stretch to match the height of the adjacent column.
+const VIEWBOX = '120 8 326 350'
 
 export default function IndiaMap({ branches = [], onBranchClick }) {
   const [geo, setGeo] = useState(null)

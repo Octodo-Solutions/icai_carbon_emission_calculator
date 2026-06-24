@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useApp } from '../../../context/AppContext'
+import { MOCK_CA_FIRMS } from '../../../data/mockBranches'
 import { ShieldCheck, Buildings, Bank, ChartBar, Hourglass } from '@phosphor-icons/react'
 import AppLayout from '../../../components/layout/AppLayout/AppLayout'
 import KpiCard from '../../../components/common/KpiCard/KpiCard'
@@ -18,7 +19,8 @@ export default function HODashboard() {
   const activeBranches = branches.filter(b => b.status !== 'overdue' && b.tco2e !== null).length
   const submitted = branches.filter(b => b.status === 'approved').length
 
-  const filteredEntities = branches.filter(b => {
+  const entities = [...branches.map(b => ({ ...b, type: 'branch' })), ...MOCK_CA_FIRMS]
+  const filteredEntities = entities.filter(b => {
     if (entityType === 'branch' && b.type === 'firm') return false
     if (entityType === 'firm' && b.type !== 'firm') return false
     return b.name.toLowerCase().includes(entitySearch.toLowerCase())
@@ -55,7 +57,7 @@ export default function HODashboard() {
             <span className={styles.dpdpIcon}><ShieldCheck size={22} /></span>
             <div>
               <div className={styles.dpdpTitle}>DPDP Act 2023 — Data Fiduciary Configuration</div>
-              <div className={styles.dpdpDesc}>Configure data processing purposes and consent workflows as required by the Digital Personal Data Protection Act 2023</div>
+              <div className={styles.dpdpDesc}>ICAI is designated as Data Fiduciary. All entity onboarding triggers a consent collection workflow. Personal data of branch users and CA members is processed only after explicit, informed consent is recorded with timestamp.</div>
             </div>
           </div>
           <div className={styles.dpdpRight}>
@@ -70,9 +72,9 @@ export default function HODashboard() {
 
         {/* KPIs */}
         <div className={styles.kpiRow}>
-          <KpiCard label="Active Branches" value={`${activeBranches} of 185`} sub="2 pending registration" icon={<Buildings size={18} />} accent="navy" />
+          <KpiCard label="Active Branches" value={`183 of 185`} sub="2 pending registration" icon={<Buildings size={18} />} accent="navy" />
           <KpiCard label="CA Firms Onboarded" value="1,247" sub="+12 this quarter" icon={<Bank size={18} />} accent="gold" />
-          <KpiCard label="Q1 Submissions" value={`${submitted} of 183`} sub={`${Math.round((submitted / 8) * 100)}% complete`} icon={<ChartBar size={18} />} accent="green" />
+          <KpiCard label="Q1 Submissions" value={`94 of 183`} sub={`51% complete`} icon={<ChartBar size={18} />} accent="green" />
           <KpiCard label="Approval Queue" value={hoApprovals.length} sub="awaiting HO review" icon={<Hourglass size={18} />} accent={hoApprovals.length > 0 ? 'amber' : 'green'} />
         </div>
 
@@ -133,8 +135,8 @@ export default function HODashboard() {
 
           {/* Active entities */}
           <SectionCard
-            title="Active Entities — Western Region"
-            subtitle="Q1 FY 2026-27 status"
+            title="Active Entities"
+            subtitle="Q1 FY 2026-27 · branches & CA firms"
             action={
               <div className={styles.entToolbar}>
                 <input
@@ -165,7 +167,7 @@ export default function HODashboard() {
                 {filteredEntities.map(b => (
                   <tr key={b.key} className={styles.entRow}>
                     <td className={styles.entName}>{b.name}</td>
-                    <td className={styles.entTd}>Branch</td>
+                    <td className={styles.entTd}>{b.type === 'firm' ? 'CA Firm' : 'Branch'}</td>
                     <td className={styles.entTd}>
                       <Badge
                         variant={b.status === 'approved' ? 'green' : b.status === 'pending' ? 'amber' : b.status === 'overdue' ? 'red' : 'navy'}

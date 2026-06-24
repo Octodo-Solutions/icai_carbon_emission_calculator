@@ -12,8 +12,13 @@
 
 .kpiRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 
-.grid { display: grid; grid-template-columns: minmax(340px, 520px) 1fr; gap: 20px; align-items: start; }
+.grid { display: grid; grid-template-columns: minmax(340px, 520px) 1fr; gap: 20px; align-items: stretch; }
 .rightCol { display: flex; flex-direction: column; gap: 20px; }
+
+/* Let the map card stretch to the row height (matching the right column) and
+   have its body fill, so the map panel ends level with the Regional Trend card. */
+.mapCard { display: flex; flex-direction: column; }
+.mapCard > :last-child { flex: 1; min-height: 0; display: flex; flex-direction: column; }
 
 .approvalItem {
   padding: 14px 20px;

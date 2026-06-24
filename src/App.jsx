@@ -51,9 +51,13 @@ function AppRoutes() {
   )
 }
 
+// Strip the trailing slash from Vite's BASE_URL ('/' or '/<repo-name>/') so the
+// router resolves correctly whether served from root or a GitHub Pages sub-path.
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <AuthProvider>
         <AppProvider>
           <AppRoutes />
