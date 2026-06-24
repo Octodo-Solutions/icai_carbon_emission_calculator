@@ -89,7 +89,7 @@
   box-shadow: var(--shadow-md);
 }
 
-.formLogo { display: flex; justify-content: flex-start; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.formLogo { display: flex; justify-content: center; margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
 .formLogo img { height: 68px; width: auto; display: block; }
 
 .eyebrow { font-size: 11px; font-weight: 600; color: var(--navy); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
