@@ -72,6 +72,9 @@ export default function LoginPage() {
       {/* Right panel */}
       <div className={styles.right}>
         <div className={styles.formCard}>
+          <div className={styles.formLogo}>
+            <img src={`${import.meta.env.BASE_URL}logo-icai1.png`} alt="The Institute of Chartered Accountants of India" />
+          </div>
           <div className={styles.eyebrow}>Branch / CA Firm / Admin Portal</div>
           <h2 className={styles.formTitle}>Sign in to your account</h2>
 

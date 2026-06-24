@@ -1,7 +1,8 @@
 import { useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../../context/AuthContext'
-import { Leaf } from '@phosphor-icons/react'
 import styles from './TopNav.module.css'
+
+const LOGO_SRC = `${import.meta.env.BASE_URL}logo-icai1.png`
 
 const NAV_LINKS = {
   branch: [
@@ -44,7 +45,7 @@ export default function TopNav() {
   return (
     <header className={styles.nav}>
       <div className={styles.brand}>
-        <div className={styles.brandIcon}><Leaf size={18} weight="light" /></div>
+        <div className={styles.brandIcon}><img src={LOGO_SRC} alt="ICAI" className={styles.brandLogo} /></div>
         <div>
           <div className={styles.brandName}>ICAI Carbon Calculator</div>
           <div className={styles.period}>{PERIOD}</div>
